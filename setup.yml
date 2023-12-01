@@ -1,7 +1,7 @@
 ---
 - name: Perform some basic configurtion tasks on new VM
   hosts: all
-  vars_file: vars/all.yml
+  vars_files: vars/all.yml
   vars:
     _rhn_account_rhailsto:  "{{ _rhn_un }}"
     _rhn_password_rhailsto: "{{ _rhn_pw }}"
