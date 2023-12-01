@@ -1,0 +1,36 @@
+---
+- name: hello world
+  hosts: localhost
+  connection: local
+  vars_files: vars/all.yml
+  vars:
+    vcenter_hostname: "{{ _vcenter_hostname }}"
+    vcenter_username: "{{ _vcenter_username }}" 
+    vcenter_password: "{{ _vcenter_password }}" 
+  tasks:
+
+
+  - name: Create a virtual machine on given ESXi hostname
+    community.vmware.vmware_guest:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      datacenter: SDDC-Datacenter
+      cluster: Cluster-1
+      folder: /Workloads/sandbox-7gdj2/
+      name: test_vm_0006
+      state: present
+      template: 'rhel8_tmpl'
+      networks:
+      - name: segment-sandbox-7gdj2 
+        device_type: vmxnet3
+        start_connected: True
+      customization:
+        script_text: |
+          #!/bin/bash
+          sudo passwd --stdin root <<<"S0L0andThanks" 
+          exit 0
+      wait_for_ip_address: true
+      wait_for_ip_address_timeout: 600
+    delegate_to: localhost
+    register: deploy_vm

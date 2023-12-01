@@ -1,0 +1,17 @@
+---
+- name: Perform some basic configurtion tasks on new VM
+  hosts: all
+  vars_file: vars/all.yml
+  vars:
+    _rhn_account_rhailsto:  "{{ _rhn_un }}"
+    _rhn_password_rhailsto: "{{ _rhn_pw }}"
+
+  tasks:
+
+  - name: Register as user (joe_user) with password (somepass) and auto-subscribe to available content.
+    community.general.redhat_subscription:
+      state: present
+      username: "{{ _rhn_account_rhailsto }}" 
+      password: "{{ _rhn_password_rhailsto }}" 
+      auto_attach: true
+
