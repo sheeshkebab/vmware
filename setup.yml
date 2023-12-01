@@ -1,0 +1,15 @@
+---
+- name: Setup fresh RHEL host with some basic things
+  hosts: all
+  vars:
+    _rhn_account_rhailsto_: "{{ _rhn_un_rhailsto_ }}"
+    _rhn_password_rhailsto_: "{{ _rhn_pw_rhailsto_ }}"
+  tasks:
+
+
+  - name: Register as user (joe_user) with password (somepass) and auto-subscribe to available content.
+    community.general.redhat_subscription:
+      state: present
+      username: "{{ _rhn_account_rhailsto_ }}" 
+      password: "{{ _rhn_password_rhailsto_ }}"
+      auto_attach: true
