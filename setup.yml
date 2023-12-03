@@ -5,8 +5,14 @@
   vars:
     _rhn_account_rhailsto:  "{{ _rhn_un }}"
     _rhn_password_rhailsto: "{{ _rhn_pw }}"
+    dns_domain: 'cba.internal'
 
   tasks:
+
+  - name : "Set the hostname as per inventory {{ inventory_hostname }}"
+    ansible.builtin.hostname:
+      name: "{{ inventory_hostname_short }}.{{ dns_domain }}"
+      use: systemd
 
   - name: Register as user (joe_user) with password (somepass) and auto-subscribe to available content.
     community.general.redhat_subscription:
