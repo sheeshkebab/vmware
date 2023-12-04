@@ -25,7 +25,7 @@
   hosts: all
   gather_facts: False
   collections:
-    - redhat.rhel-system-roles
+    - redhat.rhel_system_roles
   tasks:
   - name: Configure crypto policies
     import_role:
