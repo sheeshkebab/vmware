@@ -21,3 +21,12 @@
       password: "{{ _rhn_password_rhailsto }}" 
       auto_attach: true
 
+- name: Update Crypto Policy
+  hosts: all
+  tasks:
+  - name: Configure crypto policies
+    include_role:
+      name: rhel-system-roles.crypto_policies
+    vars:
+      - crypto_policies_policy: FUTURE
+      - crypto_policies_reboot_ok: true
