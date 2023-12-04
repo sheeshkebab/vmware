@@ -23,10 +23,13 @@
 
 - name: Update Crypto Policy
   hosts: all
+  gather_facts: False
+  collections:
+    - redhat.rhel-system-roles
   tasks:
   - name: Configure crypto policies
-    include_role:
-      name: redhat.rhel-system-roles.crypto_policies
+    import_role:
+      name: crypto_policies
     vars:
       - crypto_policies_policy: FUTURE
       - crypto_policies_reboot_ok: true
