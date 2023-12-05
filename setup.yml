@@ -33,3 +33,7 @@
     vars:
       - crypto_policies_policy: FUTURE
       - crypto_policies_reboot_ok: true
+
+  - name: Hello World
+    debug:
+      msg: "Hello World"
