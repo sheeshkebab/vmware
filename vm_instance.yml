@@ -19,7 +19,7 @@
       state: present
       folder: /Workloads/sandbox-7gdj2/
       template: 'rhel8_tmpl'
-      name: test_vm_0007
+      name: "{{ _instance_name }}" 
       cluster: Cluster-1
       datacenter: SDDC-Datacenter
       hostname: "{{ vcenter_hostname }}"
