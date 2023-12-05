@@ -9,6 +9,7 @@
     vcenter_password: "{{ _vcenter_password }}" 
     _instance_userdata: |-
       cloud-config
+    _instance_name: "{{ survey_name | default('test_vm_0007') }}"
 
   tasks:
 
@@ -18,7 +19,7 @@
       state: present
       folder: /Workloads/sandbox-7gdj2/
       template: 'rhel8_tmpl'
-      name: test_vm_0006
+      name: test_vm_0007
       cluster: Cluster-1
       datacenter: SDDC-Datacenter
       hostname: "{{ vcenter_hostname }}"
