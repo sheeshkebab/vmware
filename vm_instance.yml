@@ -18,7 +18,7 @@
     community.vmware.vmware_guest:
       state: present
       folder: /Workloads/sandbox-d787s/
-      template: 'rhel86_tpl'
+      template: 'rhel86-tpl'
       name: "{{ _instance_name }}" 
       cluster: Cluster-1
       datacenter: SDDC-Datacenter
