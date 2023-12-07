@@ -17,8 +17,8 @@
   - name: Create a virtual machine on given ESXi hostname
     community.vmware.vmware_guest:
       state: present
-      folder: /Workloads/sandbox-7gdj2/
-      template: 'rhel8_tmpl'
+      folder: /Workloads/sandbox-d787s/
+      template: 'rhel86_tpl'
       name: "{{ _instance_name }}" 
       cluster: Cluster-1
       datacenter: SDDC-Datacenter
@@ -26,7 +26,7 @@
       username: "{{ vcenter_username }}"
       password: "{{ vcenter_password }}"
       networks:
-      - name: segment-sandbox-7gdj2 
+      - name: segment-sandbox-d787s
         device_type: vmxnet3
         start_connected: True
       advanced_settings:
